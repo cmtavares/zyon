@@ -3,6 +3,9 @@ import { Syne } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/app/_components/theme-provider";
 import { Header } from "./_components/header";
+import SessionProvider from "./providers/session";
+import { Toaster } from "./_components/ui/sonner";
+import { NuqsAdapter } from "nuqs/adapters/next/app";
 
 const syne = Syne({
   subsets: ["latin"],
@@ -20,18 +23,23 @@ export default function RootLayout({
 }>) {
   return (
     <>
-      <html lang="pt-BR">
+      <html lang="pt-BR" suppressHydrationWarning>
         <head />
         <body className={`${syne.className} antialiased`}>
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            enableSystem
-            disableTransitionOnChange
-          >
-            <Header />
-            {children}
-          </ThemeProvider>
+          <SessionProvider>
+            <NuqsAdapter>
+              <ThemeProvider
+                attribute="class"
+                defaultTheme="system"
+                enableSystem
+                disableTransitionOnChange
+              >
+                <Header />
+                {children}
+                <Toaster />
+              </ThemeProvider>
+            </NuqsAdapter>
+          </SessionProvider>
         </body>
       </html>
     </>

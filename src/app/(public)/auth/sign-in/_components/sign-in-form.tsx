@@ -60,7 +60,7 @@ export function SignInForm() {
           </div>
         </div>
       </div>
-      <form action={dispatch} className="m-auto w-96">
+      <form action={dispatch} className="m-auto w-96 max-w-md px-1 md:px-0">
         <div className="flex flex-col gap-2">
           <Label
             htmlFor="email"
@@ -100,7 +100,7 @@ export function SignInForm() {
               : "Continue com e-mail"}
         </Button>
       </form>
-      <div className="mx-auto mt-4 flex max-w-sm flex-col items-center justify-center">
+      <div className="mx-auto mt-4 flex max-w-sm flex-col items-center justify-center px-1">
         <p className="mb-2 text-xs text-muted-foreground">
           Se você optar por fazer login com e-mail, enviaremos um link de acesso
           para a sua caixa de entrada.

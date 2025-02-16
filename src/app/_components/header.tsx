@@ -24,21 +24,26 @@ export function Header() {
       <div className="flex items-center justify-between p-6">
         <div className="flex items-center gap-4">
           {theme.resolvedTheme === "dark" ? (
-            <Image
-              src="/logo-light.svg"
-              width={50}
-              height={40}
-              alt="Zyon Logo"
-            />
+            <Link href="/" className="flex gap-4">
+              <Image
+                src="/logo-light.svg"
+                width={50}
+                height={40}
+                alt="Zyon Logo"
+              />
+              <h1 className="text-2xl font-bold">Zyon</h1>
+            </Link>
           ) : (
-            <Image
-              src="/logo-dark.svg"
-              width={50}
-              height={40}
-              alt="Zyon Logo"
-            />
+            <Link href="/" className="flex gap-4">
+              <Image
+                src="/logo-dark.svg"
+                width={50}
+                height={40}
+                alt="Zyon Logo"
+              />
+              <h1 className="text-2xl font-bold">Zyon</h1>
+            </Link>
           )}
-          <h1 className="text-2xl font-bold">Zyon</h1>
         </div>
 
         <div className="flex items-center gap-1">
@@ -62,7 +67,7 @@ export function Header() {
                   className="flex w-full items-center justify-start gap-2"
                   asChild
                 >
-                  <Link href="/">
+                  <Link href="/auth/sign-in">
                     <LogInIcon size={16} />
                     <span className="block">Fazer login</span>
                   </Link>

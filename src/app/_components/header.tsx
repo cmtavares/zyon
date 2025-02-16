@@ -73,16 +73,18 @@ export function Header() {
                   </Link>
                 </Button>
               </SheetClose>
-              <Button
-                variant="outline"
-                className="flex w-full items-center justify-start gap-2"
-                asChild
-              >
-                <Link href="/terms-and-conditions">
-                  <FileTextIcon size={16} />
-                  <span className="block">Termos e condições</span>
-                </Link>
-              </Button>
+              <SheetClose asChild>
+                <Button
+                  variant="outline"
+                  className="flex w-full items-center justify-start gap-2"
+                  asChild
+                >
+                  <Link href="/terms-and-conditions">
+                    <FileTextIcon size={16} />
+                    <span className="block">Termos e condições</span>
+                  </Link>
+                </Button>
+              </SheetClose>
             </SheetContent>
           </Sheet>
         </div>

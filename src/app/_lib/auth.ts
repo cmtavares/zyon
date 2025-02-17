@@ -16,5 +16,8 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       from: "onboarding@resend.dev",
     }),
   ],
+  session: {
+    strategy: "jwt",
+  },
   secret: process.env.AUTH_SECRET,
 });

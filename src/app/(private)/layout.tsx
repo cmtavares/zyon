@@ -12,10 +12,5 @@ export default async function RootLayout({
     redirect("/auth/sign-in");
   }
 
-  return (
-    <div className="flex min-h-screen flex-col gap-16">
-      <div className="flex flex-1">{children}</div>
-      <div className="flex flex-col gap-4"></div>
-    </div>
-  );
+  return <>{children}</>;
 }

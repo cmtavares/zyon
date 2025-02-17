@@ -3,9 +3,9 @@ import { Syne } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/app/_components/theme-provider";
 import { Header } from "./_components/header";
-import SessionProvider from "./providers/session";
 import { Toaster } from "./_components/ui/sonner";
 import { NuqsAdapter } from "nuqs/adapters/next/app";
+import { SessionProvider } from "next-auth/react";
 
 const syne = Syne({
   subsets: ["latin"],

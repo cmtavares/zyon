@@ -16,5 +16,5 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       from: "onboarding@resend.dev",
     }),
   ],
-  secret: process.env.NEXTAUTH_SECRET,
+  secret: process.env.AUTH_SECRET,
 });

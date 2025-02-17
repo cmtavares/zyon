@@ -52,7 +52,7 @@ export function SignInForm() {
               />
               Continuar com google
             </Button>
-            <div className="flex items-center gap-1 text-muted-foreground">
+            <div className="flex items-center gap-1 text-muted-foreground md:mb-4">
               <span className="flex-1 border-t"></span>
               ou continuar com e-mail
               <span className="flex-1 border-t"></span>

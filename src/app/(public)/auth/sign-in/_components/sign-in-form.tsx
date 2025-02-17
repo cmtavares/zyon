@@ -37,13 +37,13 @@ export function SignInForm() {
 
   return (
     <>
-      <div className="mx-auto mt-6 flex max-w-screen-xl items-center justify-center px-4 py-6">
-        <div className="w-96 max-w-screen-md">
+      <div className="mx-auto mt-6 flex max-w-screen-xl flex-col items-center justify-center overflow-x-hidden px-4 py-6">
+        <div className="w-80 max-w-screen-md md:w-96">
           <div className="flex flex-col gap-6">
             <h1 className="text-gradient text-center text-4xl font-bold tracking-tight">
               Acessar o Zyon
             </h1>
-            <Button onClick={() => signInWithGoogle()}>
+            <Button onClick={() => signInWithGoogle()} className="">
               <Image
                 src="/google-icon.svg"
                 width={24}
@@ -59,63 +59,72 @@ export function SignInForm() {
             </div>
           </div>
         </div>
-      </div>
-      <form action={dispatch} className="m-auto w-96 max-w-md px-1 md:px-0">
-        <div className="flex flex-col gap-2">
-          <Label
-            htmlFor="email"
-            className={`${state.errors?.email && "text-red-700"}`}
-          >
-            E-mail
-          </Label>
-          <Input
-            placeholder="exemplo@exemplo.com"
-            disabled={pending || state.success}
-            name="email"
-            value={email || ""}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          {state.errors?.email &&
-            state.errors.email.map((error) => (
-              <p
-                key={error}
-                aria-live="polite"
-                className="text-xs text-red-700"
-              >
-                {error}
-              </p>
-            ))}
-        </div>
-        <Button
-          variant="outline"
-          disabled={pending || state.success}
-          type="submit"
-          className="over-flow-hidden relative mt-2 w-full"
+        <form
+          action={dispatch}
+          className="mt-4 w-80 overflow-hidden px-0 md:m-auto md:w-96"
         >
-          <BorderBeam className="absolute inset-0 dark:from-white dark:to-slate-900/10" />
-          {state.success
-            ? "Link enviado!"
-            : pending
-              ? "Enviando..."
-              : "Continue com e-mail"}
-        </Button>
-      </form>
-      <div className="mx-auto mt-4 flex max-w-sm flex-col items-center justify-center px-1">
-        <p className="mb-2 text-xs text-muted-foreground">
-          Se você optar por fazer login com e-mail, enviaremos um link de acesso
-          para a sua caixa de entrada.
-        </p>
-        <p className="text-xs text-muted-foreground">
-          Ao fazer login, você concorda com nossos{" "}
-          <Link href="/terms-and-conditions" className="font-bold text-primary">
-            Termos e condições
-          </Link>{" "}
-          e{" "}
-          <Link href="/terms-and-conditions" className="font-bold text-primary">
-            Política de Privacidade
-          </Link>
-          .
-        </p>
+          <div className="flex flex-col gap-2">
+            <Label
+              htmlFor="email"
+              className={`${state.errors?.email && "text-red-700"}`}
+            >
+              E-mail
+            </Label>
+            <Input
+              placeholder="exemplo@exemplo.com"
+              disabled={pending || state.success}
+              name="email"
+              value={email || ""}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            {state.errors?.email &&
+              state.errors.email.map((error) => (
+                <p
+                  key={error}
+                  aria-live="polite"
+                  className="text-xs text-red-700"
+                >
+                  {error}
+                </p>
+              ))}
+          </div>
+          <Button
+            variant="outline"
+            disabled={pending || state.success}
+            type="submit"
+            className="over-flow-hidden relative mt-2 w-full"
+          >
+            <BorderBeam className="absolute inset-0 dark:from-white dark:to-slate-900/10" />
+            {state.success
+              ? "Link enviado!"
+              : pending
+                ? "Enviando..."
+                : "Continue com e-mail"}
+          </Button>
+        </form>
+        <div className="mx-auto mt-4 flex max-w-sm flex-col items-center justify-center px-3 md:px-0">
+          <p className="mb-2 text-xs text-muted-foreground">
+            Se você optar por fazer login com e-mail, enviaremos um link de
+            acesso para a sua caixa de entrada.
+          </p>
+          <p className="text-xs text-muted-foreground">
+            Ao fazer login, você concorda com nossos{" "}
+            <Link
+              href="/terms-and-conditions"
+              className="font-bold text-primary"
+            >
+              Termos e condições
+            </Link>{" "}
+            e{" "}
+            <Link
+              href="/terms-and-conditions"
+              className="font-bold text-primary"
+            >
+              Política de Privacidade
+            </Link>
+            .
+          </p>
+        </div>
       </div>
     </>
   );

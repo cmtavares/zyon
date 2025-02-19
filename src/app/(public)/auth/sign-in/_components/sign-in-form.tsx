@@ -43,7 +43,7 @@ export function SignInForm() {
             <h1 className="text-gradient text-center text-4xl font-bold tracking-tight">
               Acessar o Zyon
             </h1>
-            <Button onClick={() => signInWithGoogle()} className="">
+            <Button onClick={() => signInWithGoogle()}>
               <Image
                 src="/google-icon.svg"
                 width={24}

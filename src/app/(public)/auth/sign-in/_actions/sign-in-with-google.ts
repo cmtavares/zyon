@@ -3,5 +3,9 @@
 import { signIn } from "../../../../_lib/auth";
 
 export async function signInWithGoogle() {
-  await signIn("google");
+  try {
+    await signIn("google");
+  } catch (error) {
+    console.error(error);
+  }
 }

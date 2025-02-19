@@ -102,7 +102,7 @@ export function SignInForm() {
                 : "Continue com e-mail"}
           </Button>
         </form>
-        <div className="mx-auto mt-4 flex max-w-sm flex-col items-center justify-center px-3 md:px-0">
+        <div className="mx-auto mt-4 flex max-w-sm flex-col items-center justify-center px-8 md:px-0">
           <p className="mb-2 text-xs text-muted-foreground">
             Se você optar por fazer login com e-mail, enviaremos um link de
             acesso para a sua caixa de entrada.

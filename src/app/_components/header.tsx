@@ -15,9 +15,12 @@ import { Button } from "./ui/button";
 import { FileTextIcon, LogInIcon, MenuIcon } from "lucide-react";
 import Link from "next/link";
 import { useTheme } from "next-themes";
+import { useSession } from "next-auth/react";
+import { logout } from "../(public)/auth/sign-in/_actions/logout";
 
 export function Header() {
   const theme = useTheme();
+  const session = useSession();
 
   return (
     <div className="mx-auto max-w-screen-xl">
@@ -55,36 +58,65 @@ export function Header() {
               </Button>
             </SheetTrigger>
             <SheetContent className="space-y-2">
-              <SheetHeader>
-                <SheetTitle className="text-left">Menu</SheetTitle>
-                <SheetDescription className="border-b border-solid text-left">
-                  Acesse o Zyon e suas funcionalidades.
-                </SheetDescription>
-              </SheetHeader>
-              <SheetClose asChild>
-                <Button
-                  variant="outline"
-                  className="flex w-full items-center justify-start gap-2"
-                  asChild
-                >
-                  <Link href="/auth/sign-in">
-                    <LogInIcon size={16} />
-                    <span className="block">Fazer login</span>
-                  </Link>
-                </Button>
-              </SheetClose>
-              <SheetClose asChild>
-                <Button
-                  variant="outline"
-                  className="flex w-full items-center justify-start gap-2"
-                  asChild
-                >
-                  <Link href="/terms-and-conditions">
-                    <FileTextIcon size={16} />
-                    <span className="block">Termos e condições</span>
-                  </Link>
-                </Button>
-              </SheetClose>
+              {!session.data ? (
+                <>
+                  <SheetHeader>
+                    <SheetTitle className="text-left">Menu</SheetTitle>
+                    <SheetDescription className="border-b border-solid text-left">
+                      Acesse o Zyon e suas funcionalidades.
+                    </SheetDescription>
+                  </SheetHeader>
+                  <SheetClose asChild>
+                    <Button
+                      variant="outline"
+                      className="flex w-full justify-start"
+                      asChild
+                    >
+                      <Link
+                        href="/auth/sign-in"
+                        className="flex items-center gap-2"
+                      >
+                        <LogInIcon size={16} />
+                        Fazer login
+                      </Link>
+                    </Button>
+                  </SheetClose>
+                  <SheetClose asChild>
+                    <Button
+                      variant="outline"
+                      className="flex w-full justify-start"
+                      asChild
+                    >
+                      <Link
+                        href="/terms-and-conditions"
+                        className="flex items-center gap-2"
+                      >
+                        <FileTextIcon size={16} />
+                        Termos e condições
+                      </Link>
+                    </Button>
+                  </SheetClose>
+                </>
+              ) : (
+                <>
+                  <SheetHeader>
+                    <SheetTitle className="text-left">Menu</SheetTitle>
+                    <SheetDescription className="border-b border-solid text-left">
+                      Todas as funcionalidades do Zyon.
+                    </SheetDescription>
+                  </SheetHeader>
+                  <SheetClose asChild>
+                    <Button
+                      onClick={() => logout()}
+                      variant="outline"
+                      className="flex w-full items-center justify-start gap-2"
+                    >
+                      <LogInIcon size={16} />
+                      Sair
+                    </Button>
+                  </SheetClose>
+                </>
+              )}
             </SheetContent>
           </Sheet>
         </div>
